@@ -1,0 +1,213 @@
+{% extends 'astrology_app/base.html' %}
+
+{% block title %}Home - Astrology Website{% endblock %}
+{% load static %}
+{% block content %}
+<section class="home-section">
+  <div class="content">
+    <h1>Welcome to Namo Astro</h1>
+    <h3>Your Trusted Astrology Advisor</h3>
+    <p>Get accurate horoscope readings, matchmaking, career predictions, and much more from experienced astrologers.</p>
+    <button class="btn">Chat with Astrologer</button>
+  </div>
+  <div class="zodiac-wheel-container">
+    <div class="zodiac-wheel">
+      <div class="rotating-wheel">
+        <img src="{% static 'images/bgRotet.png' %}" alt="Zodiac Wheel" class="wheel-image">
+      </div>
+    </div>
+  </div>
+</section>
+
+<button class="fixed-chat-btn">Chat with Astrologer</button>
+
+<section id="services" class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-4">Astrology Services</h2>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body text-center">
+            <i class="fas fa-star fa-2x mb-3"></i>
+            <h5 class="card-title">Today's Horoscope</h5>
+            <p class="card-text">Get your personalized daily horoscope based on your zodiac sign and planetary positions.</p>
+          <a href="{% url 'horoscope' %}" class="btn btn-primary">View Today's Horoscope</a> 
+  
+            {% for sign in zodiac_signs %}
+              <button class="btn btn-primary" onclick="navigateTo('{{ sign.name|escapejs }}')">
+                View {{ sign.name }} Horoscope
+              </button><br>
+           
+            {% endfor %}
+
+
+            <script>
+              function navigateTo(signName) {
+                window.location.href = `/horoscope/${signName}/`;
+              }
+            </script>
+
+          </div>
+        </div>
+      </div>
+                
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-gem fa-2x mb-3"></i>
+                        <h5 class="card-title">Free Kundali</h5>
+                        <p class="card-text">Create a free Kundali (birth chart) online with detailed predictions for your life path.</p>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-heart fa-2x mb-3"></i>
+                        <h5 class="card-title">Marriage Compatibility</h5>
+                        <p class="card-text">Find the most compatible life partner through detailed Kundli matching.</p>
+                    </div>
+                </div>
+            </div>
+             <div class="col-md-4">
+            <div class="card">
+                <div class="card-body text-center">
+                <i class="fas fa-user-friends fa-2x mb-3"></i>
+                <h5 class="card-title">Kundli Matching</h5>
+                <p class="card-text">Planning wedding? Looking for a compatible match? We will help you find the most suitable bride and groom by matching your kundali.</p>
+                <a href="{% url 'free_kundali' %}" class="btn btn-primary">Get Kundli Matching</a> 
+                </div>
+            </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-calendar-day fa-2x mb-3"></i>
+                        <h5 class="card-title">Festival Timing</h5>
+                        <p class="card-text">Know about the most auspicious timing (shubh tithi) of festivals. Find out puja time and also festivals rituals and traditional customs.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-calendar-alt fa-2x mb-3"></i>
+                        <h5 class="card-title">Panchang</h5>
+                        <p class="card-text">Plan your day with accurate Panchang information, including tithi and shubh timings.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</section>
+<section id="why-choose-us" class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Why Choose Us</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-users fa-3x mb-3"></i>
+                        <h5 class="card-title">Experienced Astrologers</h5>
+                        <p class="card-text">Our team consists of highly experienced and skilled astrologers to provide accurate readings.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-thumbs-up fa-3x mb-3"></i>
+                        <h5 class="card-title">Personalized Services</h5>
+                        <p class="card-text">We offer personalized services tailored to your unique birth chart and requirements.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-clock fa-3x mb-3"></i>
+                        <h5 class="card-title">24/7 Availability</h5>
+                        <p class="card-text">Our services are available anytime, anywhere. Get astrology insights whenever you need them.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="customer-reviews" class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-4">Customer Reviews</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-quote-left fa-2x mb-3"></i>
+                        <h5 class="card-title">Sanjay T.</h5>
+                        <p class="card-text">"The horoscope reading I received was spot on. I feel more confident in making decisions now. Highly recommend!"</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-quote-left fa-2x mb-3"></i>
+                        <h5 class="card-title">Priya S.</h5>
+                        <p class="card-text">"The Kundali matching service helped me find my perfect match. It made my wedding decision easier."</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-quote-left fa-2x mb-3"></i>
+                        <h5 class="card-title">Amit K.</h5>
+                        <p class="card-text">"I consulted them for gemstone recommendations, and they were extremely helpful. My life has changed for the better."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="faq" class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">FAQs About Astrology</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">What is Kundali?</h5>
+                        <p class="card-text">Kundali (also known as Janampatri or Birth Chart) is an astrological chart created based on your date, time, and place of birth. It provides insights into various aspects of your life.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">What is Horoscope Reading?</h5>
+                        <p class="card-text">Horoscope reading involves analyzing the position of planets and stars at the time of your birth to provide predictions and guidance for your life.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">How does Kundli Matching work?</h5>
+                        <p class="card-text">Kundli Matching compares the birth charts of two individuals to check for compatibility in marriage, ensuring a harmonious life together.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Is astrology accurate?</h5>
+                        <p class="card-text">Astrology provides valuable insights into personality traits, life challenges, and potential outcomes based on celestial positions. It has helped millions of people, but accuracy depends on various factors.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
